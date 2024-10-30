@@ -70,6 +70,10 @@ for (let i = 0; i < courses.length; i++) {
   }
 }
 
+//OR 
+
+let course = courses.find(theC=> theC.CourseId == "PROG200")
+
 
 console.log("----------------------------------");
 
