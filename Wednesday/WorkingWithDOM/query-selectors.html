@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get ELements</title>
+</head>
+<body>
+    <main>
+        <h3>Get Elements</h3>
+        <p>Open DevTools to see what happens</p>
+        <div id="messageDiv"></div>
+        <div class="message"></div>
+        <div></div>
+        <div class="message"></div>
+        <div></div>
+    </main>
+
+    <script>
+        let messageDiv = document.getElementById("messageDiv");
+        console.log(messageDiv)
+
+        let messageDivs = document.getElementsByClassName("message")
+        console.log(messageDiv);
+
+        let div = document.getElementsByTagName("div")
+        console.log(div)
+
+        let selectId = document.querySelector("#messageDiv")
+        console.log(select);
+
+        let selectClass = document.querySelector(".message")
+        console.log(select);
+    </script>
+</body>
+</html>
