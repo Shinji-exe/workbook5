@@ -4,7 +4,6 @@ const tBody = document.getElementById("body");
 const ascendingOrder = document.querySelector("#ascendingOrder");
 const descendingOrder = document.querySelector("#descendingOrder");
 
-
 let friends = [
   "Main Characters",
   "Bikini Bottom Business Owners",
@@ -12,8 +11,8 @@ let friends = [
   "Sports and Fitness Enthusiasts",
   "Teenagers of Bikini Bottom",
   "Superheroes",
-  "Otherworldly Characters"
-]
+  "Otherworldly Characters",
+];
 
 const spongebobCharacters = [
   {
@@ -205,7 +204,7 @@ const spongebobCharacters = [
 //This code and function below is the short way
 
 const friendSelector = document.getElementById("speciesSelector");
-const speciesSelector2 = document.querySelector("#speciesSelector2");
+// const speciesSelector2 = document.querySelector("#speciesSelector2");
 
 // function pick() {
 //   // let letFirstvalue = speciesSelector.value;
@@ -222,23 +221,46 @@ const speciesSelector2 = document.querySelector("#speciesSelector2");
 
 // pick();
 
-function pick() {
-  // let letFirstvalue = speciesSelector.value;
-  friendSelector.innerHTML = ""
+function filterByFriendGroup() {
   for (let i = 0; i < friends.length; i++) {
-    // if(spongebobCharacters[i].species === letFirstvalue){
     let createOptions = document.createElement("option");
     createOptions.innerText = friends[i];
     createOptions.value = friends[i];
     friendSelector.appendChild(createOptions);
-    // }
+    console.log(friendSelector);
   }
 }
 
-pick();
+filterByFriendGroup();
 
+function filteringFriends() {
+  let friendData = friendSelector.value;
+  let filteredCharacters = spongebobCharacters.filter((character) => character.friendGroup === friendData);
 
-function buildTableAltVersion(characters) { //Helper
+  charactersTBody.innerHTML = ""
+
+  for (let i = 0; i < filteredCharacters.length; i++) {
+    let tr = charactersTBody.insertRow(); //makes a row calling the tBody called charactersTBody
+
+    let td1 = tr.insertCell();
+    td1.innerText = filteredCharacters[i].name;
+
+    let td2 = tr.insertCell();
+    td2.innerText = filteredCharacters[i].species;
+
+    let td3 = tr.insertCell();
+    td3.innerText = filteredCharacters[i].occupation;
+
+    let td4 = tr.insertCell();
+    td4.innerText = filteredCharacters[i].favoriteActivity;
+
+    let td5 = tr.insertCell();
+    td5.innerText = filteredCharacters[i].friendGroup;
+  }
+}
+
+function buildTableAltVersion(characters) {
+  //Helper
 
   let tr = charactersTBody.insertRow(); //makes a row calling the tBody called charactersTBody
 
@@ -258,11 +280,8 @@ function buildTableAltVersion(characters) { //Helper
   td5.innerText = characters.friendGroup;
 }
 
-function getFilteredData(){
-  let selectedData = speciesSelector.value;
-  const syphonFilter = spongebobCharacters.filter((character)=> character.species === selectedData)
-     buildTableAltVersion(syphonFilter)
-}
+// let friendData = friendSelector.value;
+// let filteredCharacters = spongebobCharacters.filter((character)=> character.friendGroup === friendData)
 
 function loadCharacterTables() {
   spongebobCharacters.sort((characterA, characterB) => {
@@ -284,10 +303,6 @@ for (let i = 0; i < spongebobCharacters.length; i++) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
 
 // function getSpecies() {
 //    speciesSelector2.innerHTML = "";
@@ -314,9 +329,7 @@ for (let i = 0; i < spongebobCharacters.length; i++) {
 //   }
 // }
 
-
-// let findings =  
-
+// let findings =
 
 // spongebobCharacters.sort(function (playerA, playerB) {
 //   return playerA.threePointPercentage - playerB.threePointPercentage; //OR playerB.threePointPercentage - playerA.threePointPercentage switch between ascending or descending
