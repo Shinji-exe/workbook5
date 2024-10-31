@@ -237,7 +237,7 @@ function filteringFriends() {
   let friendData = friendSelector.value;
   let filteredCharacters = spongebobCharacters.filter((character) => character.friendGroup === friendData);
 
-  charactersTBody.innerHTML = ""
+  charactersTBody.innerHTML = "";
 
   for (let i = 0; i < filteredCharacters.length; i++) {
     let tr = charactersTBody.insertRow(); //makes a row calling the tBody called charactersTBody
@@ -259,31 +259,30 @@ function filteringFriends() {
   }
 }
 
-function buildTableAltVersion(characters) {
-  //Helper
+function buildRow(character) { //Helper
 
   let tr = charactersTBody.insertRow(); //makes a row calling the tBody called charactersTBody
 
   let td1 = tr.insertCell();
-  td1.innerText = characters.name;
+  td1.innerText = character.name;
 
   let td2 = tr.insertCell();
-  td2.innerText = characters.species;
+  td2.innerText = character.species;
 
   let td3 = tr.insertCell();
-  td3.innerText = characters.occupation;
+  td3.innerText = character.occupation;
 
   let td4 = tr.insertCell();
-  td4.innerText = characters.favoriteActivity;
+  td4.innerText = character.favoriteActivity;
 
   let td5 = tr.insertCell();
-  td5.innerText = characters.friendGroup;
+  td5.innerText = character.friendGroup;
 }
 
 // let friendData = friendSelector.value;
 // let filteredCharacters = spongebobCharacters.filter((character)=> character.friendGroup === friendData)
 
-function loadCharacterTables() {
+function sortCharacters() {
   spongebobCharacters.sort((characterA, characterB) => {
     // return characterA.name - characterB.name; //Numerical
     if (characterA.name < characterB.name) {
@@ -296,11 +295,17 @@ function loadCharacterTables() {
   });
 }
 
-loadCharacterTables();
+sortCharacters();
 
-for (let i = 0; i < spongebobCharacters.length; i++) {
-  buildTableAltVersion(spongebobCharacters[i]);
+function loadTable(){ //
+  for (let i = 0; i < spongebobCharacters.length; i++) {
+    buildRow(spongebobCharacters[i]);
+  }
 }
+
+loadTable()
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
